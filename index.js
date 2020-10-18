@@ -36,9 +36,9 @@ app.post("/signup", async (req, res) => {
         }
     }else{
         res.send({"error": true, "message": "Invalid form request"});
-    }
-    
-    
+    } 
 })
+
+
 
 app.listen(process.env.PORT | PORT)
