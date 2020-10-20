@@ -25,7 +25,16 @@ module.exports = {
             return knex('todo_list').insert(list)
         },
         getAllLists: function(user_id){
-            return knex('todo_list')
+            return knex('todo_list').where('user_id', user_id)
+        },
+        getOneList: function(list_id){
+            return knex('todos').where('todo_list_id', list_id)
+        },
+        addToList: function(list){
+            return knex('todos').insert(list)
+        },
+        updateList: function(todo){
+            return knex('todos').update('todo', todo).where('id', todo.id)
         }
     }
 }
