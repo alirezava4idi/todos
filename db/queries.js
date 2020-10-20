@@ -18,5 +18,14 @@ module.exports = {
         changePassword: function(id, passowrd){
             return knex('users').update('password', passowrd).where('id', id)
         }
+    },
+
+    todos: {
+        create: function(list){
+            return knex('todo_list').insert(list)
+        },
+        getAllLists: function(user_id){
+            return knex('todo_list')
+        }
     }
 }
