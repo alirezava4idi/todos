@@ -3,7 +3,8 @@ const queries = require("../../db/queries")
 const router = express.Router()
 
 
-router.get("/api/todos", async (req, res) => {
+router.post("/api/todos", async (req, res) => {
+    console.log(req.body)
     if(req.body.user_id){
         const list = await queries.todos.getAllLists(req.body.user_id)
         res.json(list)

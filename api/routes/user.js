@@ -56,16 +56,16 @@ router.post("/api/users/signin", (req, res) => {
 				if(user){	
 					bcrypt.compare(password, user.password, (err, result) => {
 						if(result){
-							res.json({"error": false, "message": "You are now logged in!", "email": user.email})
+							res.send({"error": false, "message": "You are now logged in!", "email": user.email, "user_id": user.id})
 						}else{
-							res.json({"error": true, "message": "Invalid username or password!"})
+							res.send({"error": true, "message": "Invalid username or password!"})
 						}
 					})
 				}else{
-					res.json({ error: true, message: "Invalid username or password!" });
+					res.send({ error: true, message: "Invalid username or password!" });
 				}
 			}).catch(err => {
-				res.json({ error: true, message: "Internal sever error!" });
+				res.send({ error: true, message: "Internal sever error!" });
 			})
 			
 		}
